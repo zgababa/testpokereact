@@ -1,0 +1,16 @@
+{
+  "name": "testpokereact",
+  "version": "1.0.0",
+  "description": "Test repository for PokeReact",
+  "scripts": {
+    "start": "nodemon index"
+  },
+  "dependencies": {
+    "express-graphql": "^0.6.1",
+    "express": "^4.14.0",
+    "graphql": "^0.8.2",
+    "lodash.get": "^4.4.2",
+    "request-promise": "^4.1.1",
+    "request": "^2.79.0"
+  }
+}
