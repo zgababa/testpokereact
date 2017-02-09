@@ -16,6 +16,10 @@ const pokemonType = new graphql.GraphQLObjectType({
     order : {
       type : graphql.GraphQLInt
     },
+    orderFormatted : {
+      type : graphql.GraphQLString,
+      resolve : (pokemon) => (get(pokemon, 'order') ? `# ${pokemon.order}` : '')
+    },
     img : {
       type : graphql.GraphQLString,
       resolve : (pokemon) => pokemon.sprites.front_default
