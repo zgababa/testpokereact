@@ -3,6 +3,7 @@
 const express = require('express');
 const graphql = require('graphql').graphql;
 const graphqlHTTP = require('express-graphql');
+const path = require('path');
 
 const rootSchema = require('./schema/rootSchema');
 
@@ -15,7 +16,6 @@ app.use('/graphiql', graphqlHTTP({
   graphiql : true
 }));
 
-
 app.get('/graphql', (req, res) => {
   const graphqlQuery = req.query.graphqlQuery;
   if (!graphqlQuery) {
@@ -26,6 +26,12 @@ app.get('/graphql', (req, res) => {
     .then(response => response.data)
     .then((data) => res.json(data))
     .catch((err) => console.error(err));
+});
+
+app.use(express.static('dist'));
+app.use(express.static('img'));
+app.get('/', (req, res) => {
+  return res.sendFile(path.resolve('dist/index.html'));
 });
 
 app.listen(PORT, () => {

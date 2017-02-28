@@ -3,22 +3,34 @@
   "version": "1.0.0",
   "description": "Test repository for PokeReact",
   "scripts": {
-    "start": "nodemon index",
+    "server": "nodemon index",
+    "client": "webpack --watch",
+    "watch": "concurrently --kill-others \"npm run client\" \"npm run server\"",
     "test-server": "mocha 'schema/**/*.serverSpec.js'",
     "test-integration": "mocha 'schema/**/*.integration.spec.js'",
-    "test" : "npm run test-server && npm run test-integration"
+    "test": "npm run test-server && npm run test-integration"
   },
   "dependencies": {
-    "express-graphql": "^0.6.1",
+    "copy-webpack-plugin": "^4.0.1",
     "express": "^4.14.0",
+    "express-graphql": "^0.6.1",
     "graphql": "^0.8.2",
     "lodash.get": "^4.4.2",
+    "radium": "^0.18.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "request": "^2.79.0",
     "request-promise": "^4.1.1",
-    "request": "^2.79.0"
+    "superagent": "^3.5.0",
+    "webpack": "^2.2.1"
   },
   "devDependencies": {
-    "babel-register": "^6.22.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015-native-modules": "^6.9.4",
     "chai": "^3.5.0",
+    "concurrently": "^3.3.0",
+    "html-webpack-plugin": "^2.28.0",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0"
